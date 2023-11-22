@@ -1,11 +1,8 @@
-from math import e, sin, cos
-
-print("""Простейший калькулятор\n1. +\n2. -\n3. ÷\n4. x\n5. e**x+y\n6. sin(x+y)\n7. cos(x+y)\n8. x**y""")
+print("""Простейший калькулятор\n1. +\n2. -\n3. ÷\n4. x\n5. x%y\n6. x**(1/y)\n7. x**y""")
 choice = input()
-x = int(input())
-y = int(input())
+x = int(input("Введите x:"))
+y = int(input("Введите y:"))
 print()
-print("Ответ: ", end='')
 if choice == "1":
     print(x + y)
 elif choice == "2":
@@ -14,14 +11,18 @@ elif choice == "3":
     try:
         print(x / y)
     except Exception:
-        print("Ошибка!")
+        print("Error")
 elif choice == "4":
     print(x * y)
 elif choice == "5":
-    print(e**(x + y))
+    try:
+        print(x % y)
+    except Exception:
+        print("Error")
 elif choice == "6":
-    print(math.degrees(sin(x + y)))
+    try:
+        print(x**(1/y))
+    except Exception:
+        print("Error")
 elif choice == "7":
-    print(math.degrees(cos(x + y)))
-elif choice == "8":
     print(x ** y)
