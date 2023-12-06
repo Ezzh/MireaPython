@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QGridLayout, QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLineEdit
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLineEdit
 
 class CalculatorApp(QWidget):
     def __init__(self):
@@ -11,7 +11,8 @@ class CalculatorApp(QWidget):
         self.setWindowTitle('Калькулятор')
 
         self.input_line = QLineEdit(self)
-        self.input_line.setReadOnly(True) # Выравнивание текста по правому краю
+        self.input_line.setReadOnly(True)
+        self.input_line.setAlignment(2)  # Выравнивание текста по правому краю
 
         self.create_button('7')
         self.create_button('8')
