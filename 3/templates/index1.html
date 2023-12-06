@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>User Database</title>
+</head>
+<body>
+    <h1>User Database</h1>
+    <ul>
+        {% for user in users %}
+            <li>{{ user[1] }} ({{ user[2] }}), Occupation: {{ user[3] }}
+                <form action="/delete_user/{{ user[0] }}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <form action="/add_random_user" method="post">
+        <button type="submit">Add Random User</button>
+    </form>
+</body>
