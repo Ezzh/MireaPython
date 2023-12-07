@@ -1,5 +1,5 @@
 import sys
-from PyQt6.QtWidgets import QGridLayout, QApplication, QWidget, QVBoxLayout, QPushButton, QLineEdit
+from PyQt5.QtWidgets import QGridLayout, QApplication, QWidget, QVBoxLayout, QPushButton, QLineEdit
 
 class CalculatorApp(QWidget):
     def __init__(self):

@@ -15,10 +15,14 @@ class MainApp(QWidget):
         self.height_slider.setMinimum(140)
         self.height_slider.setMaximum(230)
 
-        self.weight_label = QLabel('Вес:')
+        self.height_slider.valueChanged.connect(lambda: self.height_label.setText('Рост:' + str(self.height_slider.value()) + " см"))
+
+        self.weight_label = QLabel('Вeс:')
         self.weight_slider = QSlider(1)  # Qt.Horizontal
         self.weight_slider.setMinimum(35)
         self.weight_slider.setMaximum(200)
+        self.weight_slider.valueChanged.connect(lambda: self.weight_label.setText('Вес:' + str(self.weight_slider.value()) + " кг"))
+
 
         self.gender_label = QLabel('Пол:')
         self.male_radio = QRadioButton('М')
@@ -133,8 +137,8 @@ class SecondApp(QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    main_app = MainApp()
-    sys.exit(app.exec_())
+    MainApp()
+    sys.exit(app.exec())
 
 if __name__ == '__main__':
     main()
