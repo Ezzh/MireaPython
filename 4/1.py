@@ -1,37 +1,16 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLineEdit
+from PyQt6.QtWidgets import QGridLayout, QApplication, QWidget, QVBoxLayout, QPushButton, QLineEdit
 
 class CalculatorApp(QWidget):
     def __init__(self):
         super().__init__()
-
         self.init_ui()
 
     def init_ui(self):
         self.setWindowTitle('Калькулятор')
 
         self.input_line = QLineEdit(self)
-        self.input_line.setReadOnly(True)
-        self.input_line.setAlignment(2)  # Выравнивание текста по правому краю
-
-        self.create_button('7')
-        self.create_button('8')
-        self.create_button('9')
-        self.create_button('/')
-        self.create_button('4')
-        self.create_button('5')
-        self.create_button('6')
-        self.create_button('*')
-        self.create_button('1')
-        self.create_button('2')
-        self.create_button('3')
-        self.create_button('-')
-        self.create_button('0')
-        self.create_button('.')
-        self.create_button('=')
-        self.create_button('+')
-        self.create_button('C')
-        self.create_button('DEL')
+        self.input_line.setReadOnly(True) 
 
         vbox = QVBoxLayout()
         vbox.addWidget(self.input_line)
@@ -40,26 +19,22 @@ class CalculatorApp(QWidget):
         button_grid.setSpacing(2)
 
         buttons = [
-            '7', '8', '9', '/',
-            '4', '5', '6', '*',
-            '1', '2', '3', '-',
-            '0', '.', '=', '+',
-            'C', 'DEL'
+            ['7', '8', '9', '/'],
+            ['4', '5', '6', '*'],
+            ['1', '2', '3', '-'],
+            ['0', '.', '=', '+'],
+            ['C', 'DEL']
         ]
 
-        row = 0
-        col = 0
-        for button_text in buttons:
-            button = self.create_button(button_text)
-            button_grid.addWidget(button, row, col)
-            col += 1
-            if col > 3:
-                col = 0
-                row += 1
+
+        for i in range(len(buttons)):
+            for j in range(len(buttons[i])):
+                button = self.create_button(buttons[i][j])
+                button_grid.addWidget(button, i, j)
+        
 
         vbox.addLayout(button_grid)
         self.setLayout(vbox)
-
         self.show()
 
     def create_button(self, text):
@@ -86,8 +61,8 @@ class CalculatorApp(QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    calc_app = CalculatorApp()
-    sys.exit(app.exec_())
+    CalculatorApp()
+    sys.exit(app.exec())
 
 if __name__ == '__main__':
     main()
